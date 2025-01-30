@@ -19,12 +19,49 @@ namespace Halmazos
             HashSet<string> bitfarago = new HashSet<string> { "Máté", "Csaba", "Zalán" };
             Console.WriteLine("Rész halmaz(bitfarago), halmaz1?, " + ReszhalmazE(bitfarago, halmaz1)); // false
             Console.WriteLine("Rész halmaz(bitfarago), halmaz2?, " + ReszhalmazE(bitfarago, halmaz2)); // true
+
+            // Házi feladat:
+            // Van-e olyan, aki mindkét versenyen elindult? (mindkét halmazban benne van)
+            Console.WriteLine("VanKozos(bitfarago, halmaz1)? " + VanEKozos(bitfarago, halmaz1)); // true
+
+            Console.WriteLine();
+            Console.WriteLine("-------------------------");
+            Console.WriteLine();
+
+            HashSet<string> metszet = new HashSet<string>(halmaz1);
+            metszet.IntersectWith(halmaz2);
+            Kiir("Mindkettő:",metszet);
+
+            HashSet<string> unio = new HashSet<string>(halmaz1);
+            unio.UnionWith(halmaz2);
+            Kiir("Mindkettő:", unio);
+
+            HashSet<string> kulonbseg = new HashSet<string>(halmaz1);
+            kulonbseg.ExceptWith(halmaz2);
+            Kiir("Mindkettő:", kulonbseg);
+
+
             Console.ReadKey();
-
-            Console.WriteLine("VanKozos(bitfarago), halmaz1");
+            
         }
+        
+        
 
-        static bool ReszhalmazE(HashSet<string> halmaz1, HashSet<string> halmaz2)
+    static bool VanEKozos(HashSet<string> halmaz1, HashSet<string> halmaz2)
+    {
+        bool vanekozos = false;
+        foreach (string elem in halmaz1)
+        {
+            if (halmaz2.Contains(elem))
+            {
+                vanekozos = true;
+            }
+        }
+        return vanekozos;
+    }
+
+
+    static bool ReszhalmazE(HashSet<string> halmaz1, HashSet<string> halmaz2)
         {
             bool reszhalmaza =true;
             foreach (string elem in halmaz1)

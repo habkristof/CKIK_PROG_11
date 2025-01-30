@@ -1,0 +1,43 @@
+nav img{
+    height: 1em;
+    vertical-align: middle;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+}
+
+nav a span{
+    vertical-align: middle;
+}
+
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+div#Keres{
+    display: flex;
+    flex-grow: 1;
+    border-radius: 20px;
+    border: 2px solid black;
+    justify-content: space-between;
+}
+
+#Keres button{
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    
+    
+}
+
+#Keres input{
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 0.5em;
+}
+
