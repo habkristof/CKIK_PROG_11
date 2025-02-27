@@ -14,7 +14,9 @@ namespace Halmazos
             Kiir("2.Verseny:", halmaz2);
             Kiir("Mindkettő:", Metszete(halmaz1, halmaz2));
             Kiir("Legalább egyik verseny:", Unio(halmaz1, halmaz2));
-            Kiir("CSak az 1. versenyen indulók: ", Kulonbseg(halmaz1, halmaz2));
+            Kiir("Csak az 1. versenyen indulók: ", Kulonbseg(halmaz1, halmaz2));
+
+
 
             HashSet<string> bitfarago = new HashSet<string> { "Máté", "Csaba", "Zalán" };
             Console.WriteLine("Rész halmaz(bitfarago), halmaz1?, " + ReszhalmazE(bitfarago, halmaz1)); // false
@@ -24,6 +26,7 @@ namespace Halmazos
             // Van-e olyan, aki mindkét versenyen elindult? (mindkét halmazban benne van)
             Console.WriteLine("VanKozos(bitfarago, halmaz1)? " + VanEKozos(bitfarago, halmaz1)); // true
 
+<<<<<<< HEAD:5_sokasagok/halmaz/halmaz/Program.cs
             Console.WriteLine();
             Console.WriteLine("-------------------------");
             Console.WriteLine();
@@ -43,6 +46,22 @@ namespace Halmazos
 
             Console.ReadKey();
             
+=======
+            Console.ReadKey();
+        }
+
+        static bool VanEKozos(HashSet<string> bitfarago, HashSet<string> halmaz1)
+        {
+            bool vanekozos = false;
+            foreach (string elem in halmaz1)
+            {
+                if (bitfarago.Contains(elem))
+                {
+                    vanekozos = true;
+                }
+            }
+            return vanekozos;
+>>>>>>> 19dfc11f7567555e5a62906717f755e106943804:5_sokasagok/halmaz/Program.cs
         }
         
         
@@ -74,19 +93,20 @@ namespace Halmazos
             return reszhalmaza;
         }
 
+        // Megadja az 1. halmaz azon elemeit, amik a 2. halmazban nincsenek benne
         static HashSet<string> Kulonbseg(HashSet<string> halmaz1, HashSet<string> halmaz2)
         {
             HashSet<string> kulonbseg = new HashSet<string>();
-            foreach (string elem in halmaz1 )
+            foreach (string elem in halmaz1)
             {
-                if (!halmaz1.Contains(elem))
+                if (!halmaz2.Contains(elem))
                 {
                     kulonbseg.Add(elem);
                 }
-                 
             }
             return kulonbseg;
         }
+
 
         static HashSet<string> Unio(HashSet<string> halmaz1, HashSet<string> halmaz2)
         {
