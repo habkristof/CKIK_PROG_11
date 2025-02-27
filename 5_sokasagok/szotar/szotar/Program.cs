@@ -36,9 +36,45 @@ namespace szotar
             List<string> gyumolcsok = new List<string> { "narancs", "alma", "Körte", "alma", "narancs", "alma","alma", "szilva","narancs" };
             Dictionary<string, int> mennyisegek = new Dictionary<string, int>();
             Megszamol(gyumolcsok, mennyisegek);
-
+            Kiir(mennyisegek);
+            
+            Maximum(mennyisegek);
+            Csakegydarab(mennyisegek);
+            
             Console.ReadKey();
 
+        }
+
+        static void Csakegydarab(Dictionary<string, int> mennyisegek)
+        {
+            bool van = false;
+            string keresettgyumolcs = "";
+            foreach ( string elem in mennyisegek.Keys)
+            {
+                if (mennyisegek[elem] == 1)
+                {
+                    van = true;
+                    keresettgyumolcs = elem;
+                }
+            }
+            Console.WriteLine(keresettgyumolcs);
+        }
+
+        static void Maximum(Dictionary<string,int > mennyisegek)
+        {
+            int maxi = int.MinValue;
+            string maxkulcs = "";
+            foreach (string elem in mennyisegek.Keys)
+            {
+                
+                if (mennyisegek[elem] > maxi)
+                {
+                    maxi = mennyisegek[elem];
+                    maxkulcs = elem;
+                }
+                
+            }
+            Console.WriteLine("legtöbb gyümolcs fajtája:" + maxkulcs);
         }
 
         static void Megszamol(List<string> gyumolcsok, Dictionary<string, int> mennyisegek)
@@ -59,7 +95,7 @@ namespace szotar
 
         }
 
-        static void Kiir(Dictionary<string, string> szotar)
+        static void Kiir<T>(Dictionary<string, T> szotar)
         {
             //Dictionary<string, string>.KeyCollection kulcsok = szotar.Keys;
             foreach (string kulcs in szotar.Keys)
